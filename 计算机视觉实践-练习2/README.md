@@ -32,27 +32,27 @@ tensorboard --logdir=<directory_name> --port=
 
 > Serving TensorBoard on localhost; to expose to the network, use a proxy or pass –bind_allTensorBoard 2.2.0 at http://localhost:6006/ (Press CTRL+C to quit)
 
-这说明 TensorBoard 已经成功上线。 我们可以用浏览器打开[http://localhost:6006/](https://link.zhihu.com/?target=http%3A//localhost%3A6006/)查看。
+这说明 TensorBoard 已经成功上线。 我们可以用浏览器打开[http://localhost:6006/]查看。
 
 ### TIME SERIES
 
 主要用于将神经网络训练过程中的acc（训练集准确率）val_acc（验证集准确率），loss（损失值），weight（权重）等等变化情况绘制成折线图。
 
-![image-20240425155517935](.\images\image-20240425155517935.png)
+![image-20240425155517935](https://github.com/wtgwuhoo/Computer-Vision-Practice-Exercise-1/blob/main/images/image-20240425155517935.png)
 
 
 
 ### SCALARS
 
-![image-20240425155549014](.\images\image-20240425155549014.png)
+![image-20240425155549014](https://github.com/wtgwuhoo/Computer-Vision-Practice-Exercise-1/blob/main/images/image-20240425155549014.png)
 
 ### GRAPHS
 
 可视化神经网络模型
 
-![image-20240425155838455](.\images\image-20240425155838455.png)
+![image-20240425155838455](https://github.com/wtgwuhoo/Computer-Vision-Practice-Exercise-1/blob/main/images/image-20240425155838455.png)
 
-![image-20240425155958947](.\images\image-20240425155958947.png)
+![image-20240425155958947](https://github.com/wtgwuhoo/Computer-Vision-Practice-Exercise-1/blob/main/images/image-20240425155958947.png)
 
 
 
@@ -64,7 +64,7 @@ tensorboard --logdir=<directory_name> --port=
 
 数据集对于模型训练非常重要，好的数据集可以有效提高训练精度和效率。示例中用到的MNIST数据集是由10类28∗28的灰度图片组成，训练数据集包含60000张图片，测试数据集包含10000张图片。
 
-![image-20240425145006846](.\images\image-20240425145006846.png)
+![image-20240425145006846](https://github.com/wtgwuhoo/Computer-Vision-Practice-Exercise-1/blob/main/images/image-20240425145006846.png)
 
 ```python
 from mindvision.dataset import Mnist
@@ -107,7 +107,7 @@ dataset_eval = download_eval.run()
 
 按照LeNet的网络结构，LeNet除去输入层共有7层，其中有2个卷积层，2个子采样层，3个全连接层。
 
-![image0](.\images\lenet.png)
+![image0](https://github.com/wtgwuhoo/Computer-Vision-Practice-Exercise-1/blob/main/images/lenet.png)
 
 定义网络模型如下：
 
@@ -163,7 +163,7 @@ model = Model(network, loss_fn=net_loss, optimizer=net_opt, metrics={'accuracy'}
 model.train(10, dataset_train, callbacks=[ckpoint, LossMonitor(0.01, 1875)])
 ```
 
-![image-20240425162443373](.\images\image-20240425162443373.png)
+![image-20240425162443373](https://github.com/wtgwuhoo/Computer-Vision-Practice-Exercise-1/blob/main/images/image-20240425162443373.png)
 
 训练过程中会打印loss值，loss值会波动，但总体来说loss值会逐步减小，精度逐步提高。每个人运行的loss值有一定随机性，不一定完全相同。
 
@@ -179,7 +179,7 @@ print("{}".format(acc))
 
 ```
 
-![image-20240425152235309](.\images\image-20240425152235309.png)
+![image-20240425152235309](https://github.com/wtgwuhoo/Computer-Vision-Practice-Exercise-1/blob/main/images/image-20240425152235309.png)
 
 可以在打印信息中看出模型精度数据，示例中精度数据达到95%以上，模型质量良好。随着网络迭代次数增加，模型精度会进一步提高。
 
@@ -194,7 +194,7 @@ param_dict = load_checkpoint("./lenet/lenet-1_1875.ckpt")
 load_param_into_net(network, param_dict)
 ```
 
-![image-20240425152354578](.\images\image-20240425152354578.png)
+![image-20240425152354578](https://github.com/wtgwuhoo/Computer-Vision-Practice-Exercise-1/blob/main/images/image-20240425152354578.png)
 
 ### 验证模型
 
@@ -226,6 +226,6 @@ predicted = np.argmax(output.asnumpy(), axis=1)
 print(f'Predicted: "{predicted}", Actual: "{labels}"')
 ```
 
-<img src=".\images\image-20240425152507129.png" alt="image-20240425152507129" style="zoom:80%;" />
+<img src="https://github.com/wtgwuhoo/Computer-Vision-Practice-Exercise-1/blob/main/images/image-20240425152507129.png" alt="image-20240425152507129" style="zoom:80%;" />
 
 从上面的打印结果可以看出，预测值与目标值完全一致。
